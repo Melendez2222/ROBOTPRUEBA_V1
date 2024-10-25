@@ -16,7 +16,6 @@ using System.Diagnostics;
 using SeleniumExtras.WaitHelpers;
 using NPOI.SS.UserModel;
 using System.Security.Policy;
-using HtmlAgilityPack;
 
 namespace ROBOTPRUEBA_V1.ADUANET
 {
@@ -111,17 +110,18 @@ namespace ROBOTPRUEBA_V1.ADUANET
                         List<string> header = data[0];
                         List<List<string>> content = data.Skip(1).ToList();
 
+                        int detalleIndex = header.IndexOf("Detalle");
                         var filteredData = content.Where(row => _codes.Contains(row[0])).ToList();
                         List<(string hrefConocimiento, string hrefDetalle, int rowIndex)> hrefs = new List<(string hrefConocimiento, string hrefDetalle, int rowIndex)>();
                         foreach (var row in filteredData)
                         {
                             var conocimientoCell = row[header.IndexOf("Conocimiento")];
-                            var DetalleCell = row[header.IndexOf("Detalle")];
+                           var detalleCell = row[detalleIndex].Trim();
                             try
                             {
                                 var conocimientoElement = table.FindElement(By.XPath($"//td/a/b[text()='{conocimientoCell}']"));
                                 string hrefConocimiento = conocimientoElement.FindElement(By.XPath("..")).GetAttribute("href");
-                                var detalleElement = table.FindElement(By.XPath($"//td/a/b[contains(text(), '{DetalleCell.Trim()}')]"));
+                                var detalleElement = table.FindElement(By.XPath($"//tr/td[{detalleIndex + 1}]/a/b[text()='{detalleCell.ToString()}']"));
                                 string hrefDetalle = detalleElement.FindElement(By.XPath("..")).GetAttribute("href");
                                 hrefs.Add((hrefConocimiento, hrefDetalle, currentRow));
                             }
@@ -210,7 +210,16 @@ namespace ROBOTPRUEBA_V1.ADUANET
                             try
                             {
                                 IWebElement headerDescElement = driver.FindElement(By.XPath(headerDescXpath));
-                                int columnDescIndex = int.Parse(headerDescElement.GetAttribute("cellIndex"));
+                                IList<IWebElement> headerDescCells = driver.FindElements(By.XPath("//table[@border='1' and @width='100%']//tr[1]/td"));
+                                int columnDescIndex = -1;
+                                for (int i = 0; i < headerDescCells.Count; i++)
+                                {
+                                    if (headerDescCells[i].Text.Contains("Descripción de Mercadería"))
+                                    {
+                                        columnDescIndex = i;
+                                        break;
+                                    }
+                                }
                                 string productXpath = $"//table[@border='1' and @width='100%']//tr[position()>1]/td[{columnDescIndex + 1}]/font";
                                 detalleElement = driver.FindElement(By.XPath(productXpath));
                                 Producto = detalleElement.Text.Trim();
