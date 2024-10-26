@@ -24,3 +24,4 @@ bin/Debug/net8.0/jsconfig1.json
 /.vs/ROBOTPRUEBA_V1/FileContentIndex
 /bin/Debug/net8.0
 *.json
+/bin
