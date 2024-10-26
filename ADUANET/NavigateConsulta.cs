@@ -116,19 +116,42 @@ namespace ROBOTPRUEBA_V1.ADUANET
                         foreach (var row in filteredData)
                         {
                             var conocimientoCell = row[header.IndexOf("Conocimiento")];
-                           var detalleCell = row[detalleIndex].Trim();
+                           var detalleCell = row[detalleIndex];
                             try
                             {
                                 var conocimientoElement = table.FindElement(By.XPath($"//td/a/b[text()='{conocimientoCell}']"));
                                 string hrefConocimiento = conocimientoElement.FindElement(By.XPath("..")).GetAttribute("href");
-                                var detalleElement = table.FindElement(By.XPath($"//tr/td[{detalleIndex + 1}]/a/b[text()='{detalleCell.ToString()}']"));
-                                string hrefDetalle = detalleElement.FindElement(By.XPath("..")).GetAttribute("href");
-                                hrefs.Add((hrefConocimiento, hrefDetalle, currentRow));
+                                // Obtener todos los elementos que podrían contener el valor de detalleCell
+                                var detalleElements = table.FindElements(By.XPath($"//tr/td[{detalleIndex + 1}]/a/b"));
+                                string hrefDetalle = null;
+
+                                // Filtrar manualmente los elementos para encontrar el que tiene exactamente el valor "72"
+                                foreach (var element in detalleElements)
+                                {
+                                    string pruebaddd = element.ToString();
+                                    string pruebdaos = element.Text.Trim();
+                                    if (element.Text.Trim() == detalleCell)
+                                    {
+                                        hrefDetalle = element.FindElement(By.XPath("..")).GetAttribute("href");
+                                        break;
+                                    }
+                                }
+
+                                if (hrefDetalle != null)
+                                {
+                                    hrefs.Add((hrefConocimiento, hrefDetalle, currentRow));
+                                }
+                                else
+                                {
+                                    writeLog.Log($"No se encontró el enlace para el detalle: {detalleCell}");
+                                }
+                                hrefs.Add((hrefConocimiento, "", currentRow));
                             }
                             catch (NoSuchElementException)
                             {
                                 writeLog.Log($"No se encontró el enlace para el conocimiento: {conocimientoCell}");
                             }
+
 
                             var sheetRow = sheet.CreateRow(currentRow++);
                             for (int j = 0; j < row.Count; j++)
@@ -232,7 +255,7 @@ namespace ROBOTPRUEBA_V1.ADUANET
                             }
 
                             // Añadir el "Detalle" o "-" a la hoja de trabajo en la fila correspondiente
-                            var cellDetalle = row.CreateCell(row.LastCellNum + 1);
+                            var cellDetalle = row.CreateCell(row.LastCellNum);
                             cellDetalle.SetCellValue(Producto);
                         }
                     }
