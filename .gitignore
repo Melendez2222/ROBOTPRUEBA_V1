@@ -25,3 +25,4 @@ bin/Debug/net8.0/jsconfig1.json
 /bin/Debug/net8.0
 *.json
 /bin
+/CONFIG
