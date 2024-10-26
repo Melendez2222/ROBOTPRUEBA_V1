@@ -12,7 +12,7 @@ namespace ROBOTPRUEBA_V1.CONFIG
         
         public static string TxtFileName => "extracted_digits.txt";
         public static List<string> ExtractedDigitsList { get; set; } = new List<string>();
-        public static string logFilePath => @"D:\Escritorio\DOCS ROBOT\LOGS\log.txt";
+        public static string logFilePath => @"C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\logs\log.txt";
         public static string ExcelFileManifestSunat { get; set; }
         public static string DownloadDirectory { get; private set; }
         public static string ConsultaURL { get; private set; }
