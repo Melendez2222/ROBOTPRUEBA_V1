@@ -10,9 +10,9 @@
     "Base_URL_ADUANET": "http://www.aduanet.gob.pe"
   },
   "FilePaths": {
-    "DefaultDownloadDirectory": "C:\\Users\\cristhian.melendez\\Downloads",
-    "DownloadDirectory": "C:\\Users\\cristhian.melendez\\Desktop\\PRUEBAROBOT\\EXCEL",
-    "Log":"C:\\Users\\cristhian.melendez\\Desktop\\PRUEBAROBOT\\logs\\log.txt"
+    "DefaultDownloadDirectory": "D:\\Descargas",
+    "DownloadDirectory": "D:\\Escritorio\\DOCS ROBOT\\EXCEL",
+    "Log":"D:\\Escritorio\\DOCS ROBOT\\LOGS\\log.txt"
   },
   "Codes": [
     "CAMTR",

@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cristhian.melendez\\source\\repos\\ROBOTPRUEBA_V1\\ROBOTPRUEBA_V1.csproj": {}
+    "D:\\Documentos\\GitHub\\ROBOTPRUEBA_V1\\ROBOTPRUEBA_V1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cristhian.melendez\\source\\repos\\ROBOTPRUEBA_V1\\ROBOTPRUEBA_V1.csproj": {
+    "D:\\Documentos\\GitHub\\ROBOTPRUEBA_V1\\ROBOTPRUEBA_V1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cristhian.melendez\\source\\repos\\ROBOTPRUEBA_V1\\ROBOTPRUEBA_V1.csproj",
+        "projectUniqueName": "D:\\Documentos\\GitHub\\ROBOTPRUEBA_V1\\ROBOTPRUEBA_V1.csproj",
         "projectName": "ROBOTPRUEBA_V1",
-        "projectPath": "C:\\Users\\cristhian.melendez\\source\\repos\\ROBOTPRUEBA_V1\\ROBOTPRUEBA_V1.csproj",
-        "packagesPath": "C:\\Users\\cristhian.melendez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cristhian.melendez\\source\\repos\\ROBOTPRUEBA_V1\\obj\\",
+        "projectPath": "D:\\Documentos\\GitHub\\ROBOTPRUEBA_V1\\ROBOTPRUEBA_V1.csproj",
+        "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+        "outputPath": "D:\\Documentos\\GitHub\\ROBOTPRUEBA_V1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+          "E:\\PROGRAMAS PC\\VISUAL STUDIO\\COMPONENTES Y DEMAS\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\cristhian.melendez\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
