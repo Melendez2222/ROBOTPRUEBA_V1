@@ -15,13 +15,11 @@ namespace ROBOTPRUEBA_V1.SUNAT
 
         public LoginSunat()
         {
-            var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("jsconfig1.json", optional: false, reloadOnChange: true);
+            var builder = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);;
 
             _configuration = builder.Build();
         }
-        public void Login(IWebDriver driver)
+        public async Task Login(IWebDriver driver)
         {
             string RUC = _configuration["Credentials:RUC"];
             string USUARIO = _configuration["Credentials:Users"];
@@ -34,10 +32,10 @@ namespace ROBOTPRUEBA_V1.SUNAT
 
             var userInput = driver.FindElement(By.Id("txtUsuario"));
             userInput.SendKeys(USUARIO);
-
+            Task.Delay(new Random().Next(1000, 3000)).Wait();
             var passwordInput = driver.FindElement(By.Id("txtContrasena"));
             passwordInput.SendKeys(PASSWORD);
-
+            Task.Delay(new Random().Next(1000, 3000)).Wait();
             var loginButton = driver.FindElement(By.Id("btnAceptar"));
             loginButton.Click();
         }

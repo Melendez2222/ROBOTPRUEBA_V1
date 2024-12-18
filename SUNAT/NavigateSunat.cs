@@ -13,17 +13,16 @@ namespace ROBOTPRUEBA_V1.SUNAT
     {
         public void NavigateToExportPage(IWebDriver driver, WebDriverWait wait, CancellationToken stoppingToken)
         {
-
-            var opComerext = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("divOpcionServicio3")));
+            var opComerext = driver.FindElement(By.Id("divOpcionServicio3"));
             opComerext.Click();
-
-            var maniCargSal = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("nivel2_28_2")));
+            Task.Delay(1000).Wait();
+            var maniCargSal = driver.FindElement(By.Id("nivel2_28_2"));
             maniCargSal.Click();
-
-            var consulta = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("nivel3_28_2_2")));
+            Task.Delay(1000).Wait();
+            var consulta = driver.FindElement(By.Id("nivel3_28_2_2"));
             consulta.Click();
-
-            var trazManCarga = wait.Until(ExpectedConditions.ElementIsVisible(By.Id("nivel4_28_2_2_1_1")));
+            Task.Delay(1000).Wait();
+            var trazManCarga = driver.FindElement(By.Id("nivel4_28_2_2_1_1"));
             trazManCarga.Click();
 
 
