@@ -74,7 +74,8 @@ namespace ROBOTPRUEBA_V1
 			string firefoxPath = @"C:\Program Files\Mozilla Firefox\firefox.exe";
 			string firefoxVersion = "127.0";
 			var service = FirefoxDriverService.CreateDefaultService(driverPath);
-			service.HideCommandPromptWindow = true;
+			service.HideCommandPromptWindow = false;
+
 
 			var options = new FirefoxOptions();
 			options.BrowserExecutableLocation = firefoxPath;

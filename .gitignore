@@ -15,4 +15,17 @@
 .vs/ROBOTPRUEBA_V1/FileContentIndex/f20b4371-5b1d-4218-bd3b-9095eab77ff4.vsidx
 .vs/ROBOTPRUEBA_V1/FileContentIndex/3c82d6eb-388e-4ca0-baa5-546ff57c1293.vsidx
 .vs/ROBOTPRUEBA_V1/FileContentIndex/6e7a35c3-ff11-4b21-bb1e-60e439ab5fe4.vsidx
+<<<<<<< HEAD
 /.vs
+=======
+/obj
+.vs/ROBOTPRUEBA_V1/FileContentIndex/c2cb02f9-acbb-44a6-9154-7a729b3688ee.vsidx
+bin/Debug/net8.0/jsconfig1.json
+/bin
+/bin
+/bin
+/.vs/ROBOTPRUEBA_V1/FileContentIndex
+/bin/Debug/net8.0
+/bin
+/CONFIG
+>>>>>>> 6294dc987057123a601b10a9aea2caafb37a7a5e
