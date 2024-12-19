@@ -1,3 +1,5 @@
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\appsettings.json
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\geckodriver.exe
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ROBOTPRUEBA_V1.exe
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\selenium-manager\linux\selenium-manager
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\selenium-manager\macos\selenium-manager
@@ -7,11 +9,16 @@ C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ROBOTPRUEBA_V1.deps.jso
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ROBOTPRUEBA_V1.runtimeconfig.json
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ROBOTPRUEBA_V1.pdb
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\BouncyCastle.Cryptography.dll
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ClosedXML.dll
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ClosedXML.Parser.dll
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\DocumentFormat.OpenXml.dll
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\DocumentFormat.OpenXml.Framework.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\SeleniumExtras.WaitHelpers.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\Enums.NET.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\EPPlus.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\EPPlus.Interfaces.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\EPPlus.System.Drawing.dll
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ExcelNumberFormat.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ExtendedNumerics.BigDecimal.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\MathNet.Numerics.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\Microsoft.Extensions.Configuration.dll
@@ -45,10 +52,12 @@ C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\Microsoft.Extensions.Pr
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\Microsoft.Toolkit.Uwp.Notifications.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\Microsoft.Win32.SystemEvents.dll
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\Newtonsoft.Json.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\NPOI.Core.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\NPOI.OOXML.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\NPOI.OpenXml4Net.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\NPOI.OpenXmlFormats.dll
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\RBush.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\WebDriver.Support.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\WebDriver.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\ICSharpCode.SharpZipLib.dll
@@ -57,6 +66,7 @@ C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\SixLabors.ImageSharp.dl
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\System.Configuration.ConfigurationManager.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\System.Diagnostics.EventLog.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\System.Drawing.Common.dll
+C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\System.IO.Packaging.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\System.Security.Cryptography.Pkcs.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\System.Security.Cryptography.ProtectedData.dll
 C:\Users\cristhian.melendez\Desktop\PRUEBAROBOT\PUBLICAR\System.Security.Cryptography.Xml.dll

@@ -46,12 +46,17 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.104.1, )"
+            },
             "DotNetSeleniumExtras.WaitHelpers": {
               "target": "Package",
               "version": "[3.11.0, )"
@@ -59,10 +64,6 @@
             "EPPlus": {
               "target": "Package",
               "version": "[7.4.1, )"
-            },
-            "HtmlAgilityPack": {
-              "target": "Package",
-              "version": "[1.11.70, )"
             },
             "Microsoft.Extensions.Configuration": {
               "target": "Package",
@@ -84,17 +85,21 @@
               "target": "Package",
               "version": "[2.7.1, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "Selenium.Support": {
               "target": "Package",
-              "version": "[4.25.0, )"
+              "version": "[4.22.0, )"
             },
             "Selenium.WebDriver": {
               "target": "Package",
-              "version": "[4.25.0, )"
+              "version": "[4.22.0, )"
             },
-            "Selenium.WebDriver.ChromeDriver": {
+            "Selenium.WebDriver.GeckoDriver": {
               "target": "Package",
-              "version": "[130.0.6723.5800, )"
+              "version": "[0.34.0, )"
             }
           },
           "imports": [
@@ -113,7 +118,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
