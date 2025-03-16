@@ -10,7 +10,7 @@ namespace ROBOTPRUEBA_V1.FILES.TXT
 {
 	internal class TXTDigitosExtraidos
 	{
-		public async Task Digitos_Extraidos_TxT(string downloadDirectory, List<string> extractedDigitsList)
+		public async Task Digitos_Extraidos_TxT(string downloadDirectory, Dictionary<string, string> extractedDigitsList)
 		{
 			var txtFileName = Path.Combine(downloadDirectory, GlobalSettings.TxtFileName);
 			if (File.Exists(txtFileName))
@@ -23,8 +23,11 @@ namespace ROBOTPRUEBA_V1.FILES.TXT
 			{
 				foreach (var digits in extractedDigitsList)
 				{
-					txtFile.WriteLine(digits);
-					GlobalSettings.ExtractedDigitsList.Add(digits);
+					txtFile.WriteLine(digits.Key);
+					if (!GlobalSettings.ExtractedDigitsList.ContainsKey(digits.Key))
+					{
+						GlobalSettings.ExtractedDigitsList[digits.Key] = digits.Value;
+					}
 				}
 			}
 		}

@@ -61,13 +61,13 @@ namespace ROBOTPRUEBA_V1.SUNAT
                     int currentRow = sheet.Dimension?.End.Row + 1 ?? 1;
                     bool isFirstDigit = currentRow == 1;
                     List<string> header = new List<string>();
-
-                    foreach (var digit in GlobalSettings.ExtractedDigitsList)
+					foreach (var digit in GlobalSettings.ExtractedDigitsList)
                     {
 						int maxAttemptsnavADUA = 3;
 						int attemptnavADUA = 0;
 						bool successnavADUA = false;
-
+                        
+                       
 						while (attemptnavADUA < maxAttemptsnavADUA && !successnavADUA)
 						{
 							try
@@ -93,10 +93,13 @@ namespace ROBOTPRUEBA_V1.SUNAT
 							writeLog.Log($"Error en navegar al aduanet para el manifiesto {digit}");
 							continue;
 						}
-
+						Task.Delay(3000).Wait();
+						var inputanno = driver.FindElement(By.Name("CMc1_Anno"));
+						inputanno.Clear(); // Limpia el campo
+						inputanno.SendKeys(digit.Value); // Envía el nuevo valor
 						Task.Delay(3000).Wait();    
                         var inputField = driver.FindElement(By.Name("CMc1_Numero"));
-                        inputField.SendKeys(digit);
+                        inputField.SendKeys(digit.Key);
 
                         var consultButton = waits.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(By.XPath("//input[@value='Consultar']")));
                         consultButton.Click();
@@ -229,7 +232,7 @@ namespace ROBOTPRUEBA_V1.SUNAT
                             writeLog.Log($"No se encontraron datos filtrados para el dígito: {digit}");
                             continue;
                         }
-                        GlobalSettings.DigitsListFiltered.Add(digit);
+                        GlobalSettings.DigitsListFiltered.Add(digit.Key);
 
                         if (isFirstDigit)
                         {
@@ -278,7 +281,7 @@ namespace ROBOTPRUEBA_V1.SUNAT
                                     }
                                     dataColumn++;
                                 }
-                                sheet.Cells[dataRow, dataColumn].Value = digit;
+                                sheet.Cells[dataRow, dataColumn].Value = digit.Key;
                                 dataColumn++;
                                 sheet.Cells[dataRow, dataColumn].Value = fechaSalida;
                                 dataColumn++;
@@ -298,7 +301,8 @@ namespace ROBOTPRUEBA_V1.SUNAT
                         {
                             try
                             {
-                               await _obtenerembarcador.Obtener_embarcador(driver, wait, stoppingToken);
+								Task.Delay(6000).Wait();
+								await _obtenerembarcador.Obtener_embarcador(driver, wait, stoppingToken);
                                 success = true; 
                             }
                             catch (Exception ex)
@@ -322,8 +326,8 @@ namespace ROBOTPRUEBA_V1.SUNAT
 							bool elementsFound = false;
 							int maxAttemptsmenu = 5;
 							int attemptmenu = 0;
-							IList<IWebElement> pageLinks = null;
-
+							IList<IWebElement>? pageLinks = null;
+                            Task.Delay(15000).Wait();
 							while (!elementsFound && attemptmenu < maxAttemptsmenu)
 							{
 								try
@@ -339,10 +343,12 @@ namespace ROBOTPRUEBA_V1.SUNAT
 										throw new NoSuchElementException();
 									}
 								}
-								catch (NoSuchElementException)
+								catch (Exception ex)
 								{
+                                    writeLog.Log($"ERROR AL BUSCAR EL MANIFIESTO EN SUANT Y BUSCAR EMBARCADOR :{ex}");
 									if (attemptmenu < maxAttemptsmenu)
 									{
+										writeLog.Log($"REINTENTANDO ...... INTENTO NUMERO: {attemptmenu}");
 										await Task.Delay(5000); // Espera 5 segundos antes del siguiente intento
 									}
 								}
@@ -375,7 +381,7 @@ namespace ROBOTPRUEBA_V1.SUNAT
                                     if (match.Success)
                                     {
                                         string extractedNumber = match.Groups[1].Value; 
-                                        if (extractedNumber == digit)
+                                        if (extractedNumber == digit.Key)
                                         {
                                             js.ExecuteScript("arguments[0].click();", link);
                                             Task.Delay(6000).Wait(); 
@@ -894,7 +900,7 @@ namespace ROBOTPRUEBA_V1.SUNAT
                                 for (int rowIndex = currentRow; rowIndex <= sheet.Dimension.End.Row; rowIndex++)
                                 {
                                     if (sheet.Cells[rowIndex, header.IndexOf("Detalle") + 1].Text == filteredData["Detalle"][i].Text &&
-                                        sheet.Cells[rowIndex, header.IndexOf("N° de Manifiesto") + 1].Text == digit)
+                                        sheet.Cells[rowIndex, header.IndexOf("N° de Manifiesto") + 1].Text == digit.Key)
                                     {
                                         filaExcel = rowIndex;
                                         break;

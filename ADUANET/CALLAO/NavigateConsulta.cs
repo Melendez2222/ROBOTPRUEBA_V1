@@ -55,7 +55,7 @@ namespace ROBOTPRUEBA_V1.ADUANET.CALLAO
 
                         Task.Delay(3000).Wait();
                         var inputField = driver.FindElement(By.Name("CMc1_Numero"));
-                        inputField.SendKeys(digit);
+                        inputField.SendKeys(digit.Key);
 
                         var consultButton = driver.FindElement(By.XPath("//input[@value='Consultar']"));
                         consultButton.Click();

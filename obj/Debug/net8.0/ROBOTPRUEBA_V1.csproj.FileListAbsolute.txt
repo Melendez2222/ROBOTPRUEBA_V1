@@ -178,3 +178,4 @@ C:\Users\cristhian.melendez\source\repos\ROBOTPRUEBA_V1\obj\Debug\net8.0\refint\
 C:\Users\cristhian.melendez\source\repos\ROBOTPRUEBA_V1\obj\Debug\net8.0\ROBOTPRUEBA_V1.pdb
 C:\Users\cristhian.melendez\source\repos\ROBOTPRUEBA_V1\obj\Debug\net8.0\ROBOTPRUEBA_V1.genruntimeconfig.cache
 C:\Users\cristhian.melendez\source\repos\ROBOTPRUEBA_V1\obj\Debug\net8.0\ref\ROBOTPRUEBA_V1.dll
+C:\Users\cristhian.melendez\source\repos\ROBOTPRUEBA_V1\bin\Debug\net8.0\geckodriver.exe

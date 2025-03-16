@@ -12,8 +12,8 @@ namespace ROBOTPRUEBA_V1.CONFIG
 	{
         
         public static string TxtFileName => "extracted_digits.txt";
-        public static List<string> ExtractedDigitsList { get; set; } = new List<string>();
-        public static string logFilePath { get; set; }
+		public static Dictionary<string, string> ExtractedDigitsList { get; set; } = new Dictionary<string, string>();
+		public static string logFilePath { get; set; }
         public static string ExcelFileManifestSunat { get; set; }
         public static string DownloadDirectory { get; private set; }
         public static string ConsultaURL { get; private set; }

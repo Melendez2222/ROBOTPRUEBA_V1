@@ -59,10 +59,12 @@ namespace ROBOTPRUEBA_V1.ADUANET.PAITA
                 writeLog.Log("No hay dígitos extraídos disponibles.");
                 return;
             }
+            
             try
             {
                 foreach (var digit in GlobalSettings.ExtractedDigitsList)
                 {
+					
 					int maxAttemptsnav = 3;
 					int attemptnav = 0;
 					bool successnav = false;
@@ -78,7 +80,7 @@ namespace ROBOTPRUEBA_V1.ADUANET.PAITA
 						}
 						catch (WebDriverTimeoutException ex)
 						{
-							writeLog.Log($"Error en el intento {attemptnav} de navegar al aduanet para el manifiesto {digit}: {ex.Message}");
+							writeLog.Log($"Error en el intento {attemptnav} de navegar al aduanet para el manifiesto {digit.Key}: {ex.Message}");
 
 							Task.Delay(3000).Wait();
 						}
@@ -88,13 +90,16 @@ namespace ROBOTPRUEBA_V1.ADUANET.PAITA
 						}
 					}
                     if (!successnav) {
-						writeLog.Log($"Error en navegar al aduanet para el manifiesto {digit}");
+						writeLog.Log($"Error en navegar al aduanet para el manifiesto {digit.Key}");
 						continue;
                     }
-					
-                    Task.Delay(3000).Wait();
+					Task.Delay(3000).Wait();
+					var inputanno = driver.FindElement(By.Name("CMc1_Anno"));
+					inputanno.Clear(); // Limpia el campo
+					inputanno.SendKeys(digit.Value); // Envía el nuevo valor
+					Task.Delay(3000).Wait();
                     IWebElement inputManifest = driver.FindElement(By.Name("CMc1_Numero"));
-                    inputManifest.SendKeys(digit);
+                    inputManifest.SendKeys(digit.Key);
                     Task.Delay(1000).Wait();
                     var CODADUANASelect = driver.FindElement(By.Id("CG_cadu"));
                     var selectElementCA = new SelectElement(CODADUANASelect);
@@ -186,7 +191,7 @@ namespace ROBOTPRUEBA_V1.ADUANET.PAITA
 						continue; 
 					}
 					Task.Delay(10000).Wait();
-                    await convertFormatExcel.ConvertConsulManifest(fechaSalida, digit);
+                    await convertFormatExcel.ConvertConsulManifest(fechaSalida, digit.Key);
                     try
                     {
                         var paginasElement = driver.FindElement(By.XPath("//td[contains(text(), 'Páginas:')]"));
@@ -195,7 +200,7 @@ namespace ROBOTPRUEBA_V1.ADUANET.PAITA
 
                         for (int i = 0; i <= links.Count; i++)
                         {
-                            obtenerurldetalle.ObtenerInfDetalle(driver, digit);
+                            obtenerurldetalle.ObtenerInfDetalle(driver, digit.Key);
 
                             if (i < links.Count)
                             {
@@ -206,7 +211,7 @@ namespace ROBOTPRUEBA_V1.ADUANET.PAITA
                     }
                     catch (Exception)
                     {
-                       obtenerurldetalle.ObtenerInfDetalle(driver, digit);
+                       obtenerurldetalle.ObtenerInfDetalle(driver, digit.Key);
 
                     }
                 }

@@ -63,9 +63,9 @@ namespace ROBOTPRUEBA_V1.FILES.Excel
                     writeLog.Log($"Error al mover el archivo: {ex.Message}");
                 }
 
-                var extractedDigitsList = new List<string>();
+                var extractedDigitsList = new Dictionary<string, string>();
 
-                using (var fileStream = new FileStream(newFileName, FileMode.Open, FileAccess.ReadWrite))
+				using (var fileStream = new FileStream(newFileName, FileMode.Open, FileAccess.ReadWrite))
                 {
                     var workbook = new HSSFWorkbook(fileStream);
                     var sheet = workbook.GetSheetAt(0);
@@ -119,16 +119,37 @@ namespace ROBOTPRUEBA_V1.FILES.Excel
                                 {
                                     var cellValue = cell.StringCellValue;
                                     int lastDashIndex = cellValue.LastIndexOf('-');
-                                    if (lastDashIndex != -1 && lastDashIndex + 2 < cellValue.Length)
-                                    {
-                                        var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
-                                        var newCell = row.CreateCell(2);
-                                        newCell.CellStyle = cell.CellStyle;
-                                        newCell.SetCellValue(extractedDigits);
-                                        extractedDigitsList.Add(extractedDigits);
+									int secondLastDashIndex = lastDashIndex > 0 ? cellValue.LastIndexOf('-', lastDashIndex - 1): -1;
 
-                                    }
-                                }
+									//if (lastDashIndex != -1 && lastDashIndex + 2 < cellValue.Length)
+									//                           {
+									//                               var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
+									//                               var newCell = row.CreateCell(2);
+									//                               newCell.CellStyle = cell.CellStyle;
+									//                               newCell.SetCellValue(extractedDigits);
+									//                               extractedDigitsList.Add(extractedDigits);
+
+									//                           }
+									if (lastDashIndex != -1 && secondLastDashIndex != -1)
+									{
+										// Extraer los dígitos después del último guion
+										var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
+
+										// Extraer el año entre el penúltimo y el último guion
+										var year = cellValue.Substring(secondLastDashIndex + 1, lastDashIndex - secondLastDashIndex - 1).Trim();
+
+										// Crear nueva celda en la hoja
+										var newCell = row.CreateCell(2);
+										newCell.CellStyle = cell.CellStyle;
+										newCell.SetCellValue(extractedDigits);
+
+										// Agregar al diccionario global
+										if (!extractedDigitsList.ContainsKey(extractedDigits))
+										{
+											extractedDigitsList[extractedDigits] = year;
+										}
+									}
+								}
 
                             }
                         }
@@ -176,9 +197,9 @@ namespace ROBOTPRUEBA_V1.FILES.Excel
                     writeLog.Log($"Error al mover el archivo: {ex.Message}");
                 }
 
-                var extractedDigitsList = new List<string>();
+				var extractedDigitsList = new Dictionary<string, string>();
 
-                using (var fileStream = new FileStream(newFileName, FileMode.Open, FileAccess.ReadWrite))
+				using (var fileStream = new FileStream(newFileName, FileMode.Open, FileAccess.ReadWrite))
                 {
                     var workbook = new HSSFWorkbook(fileStream);
                     var sheet = workbook.GetSheetAt(0);
@@ -227,16 +248,36 @@ namespace ROBOTPRUEBA_V1.FILES.Excel
                                 if (cell != null)
                                 {
                                     var cellValue = cell.StringCellValue;
-                                    int lastDashIndex = cellValue.LastIndexOf('-');
-                                    if (lastDashIndex != -1 && lastDashIndex + 2 < cellValue.Length)
-                                    {
-                                        var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
-                                        var newCell = row.CreateCell(2);
-                                        newCell.CellStyle = cell.CellStyle;
-                                        newCell.SetCellValue(extractedDigits);
-                                        extractedDigitsList.Add(extractedDigits);
-                                    }
-                                }
+									int lastDashIndex = cellValue.LastIndexOf('-');
+									int secondLastDashIndex = lastDashIndex > 0 ? cellValue.LastIndexOf('-', lastDashIndex - 1) : -1;
+									//if (lastDashIndex != -1 && lastDashIndex + 2 < cellValue.Length)
+									//                           {
+									//                               var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
+									//                               var newCell = row.CreateCell(2);
+									//                               newCell.CellStyle = cell.CellStyle;
+									//                               newCell.SetCellValue(extractedDigits);
+									//                               extractedDigitsList.Add(extractedDigits);
+									//                           }
+									if (lastDashIndex != -1 && secondLastDashIndex != -1 && lastDashIndex + 2 < cellValue.Length)
+									{
+										// Extraer los dígitos después del último guion
+										var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
+
+										// Extraer el año entre el penúltimo y el último guion
+										var year = cellValue.Substring(secondLastDashIndex + 1, lastDashIndex - secondLastDashIndex - 1).Trim();
+
+										// Crear nueva celda en la hoja
+										var newCell = row.CreateCell(2);
+										newCell.CellStyle = cell.CellStyle;
+										newCell.SetCellValue(extractedDigits);
+
+										// Agregar al diccionario global
+										if (!extractedDigitsList.ContainsKey(extractedDigits))
+										{
+											extractedDigitsList[extractedDigits] = year;
+										}
+									}
+								}
                             }
                         }
                     }
@@ -288,9 +329,9 @@ namespace ROBOTPRUEBA_V1.FILES.Excel
                     Console.WriteLine($"Error al mover el archivo: {ex.Message}");
                 }
 
-                var extractedDigitsList = new List<string>();
+				var extractedDigitsList = new Dictionary<string, string>();
 
-                using (var fileStream = new FileStream(newFileName, FileMode.Open, FileAccess.ReadWrite))
+				using (var fileStream = new FileStream(newFileName, FileMode.Open, FileAccess.ReadWrite))
                 {
                     var workbook = new HSSFWorkbook(fileStream);
                     var sheet = workbook.GetSheetAt(0);
@@ -339,16 +380,36 @@ namespace ROBOTPRUEBA_V1.FILES.Excel
                                 if (cell != null)
                                 {
                                     var cellValue = cell.StringCellValue;
-                                    int lastDashIndex = cellValue.LastIndexOf('-');
-                                    if (lastDashIndex != -1 && lastDashIndex + 2 < cellValue.Length)
-                                    {
-                                        var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
-                                        var newCell = row.CreateCell(2);
-                                        newCell.CellStyle = cell.CellStyle;
-                                        newCell.SetCellValue(extractedDigits);
-                                        extractedDigitsList.Add(extractedDigits);
-                                    }
-                                }
+									int lastDashIndex = cellValue.LastIndexOf('-');
+									int secondLastDashIndex = lastDashIndex > 0 ? cellValue.LastIndexOf('-', lastDashIndex - 1) : -1;
+									//if (lastDashIndex != -1 && lastDashIndex + 2 < cellValue.Length)
+									//                           {
+									//                               var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
+									//                               var newCell = row.CreateCell(2);
+									//                               newCell.CellStyle = cell.CellStyle;
+									//                               newCell.SetCellValue(extractedDigits);
+									//                               extractedDigitsList.Add(extractedDigits);
+									//                           }
+									if (lastDashIndex != -1 && secondLastDashIndex != -1 && lastDashIndex + 2 < cellValue.Length)
+									{
+										// Extraer los dígitos después del último guion
+										var extractedDigits = cellValue.Substring(lastDashIndex + 2).Trim();
+
+										// Extraer el año entre el penúltimo y el último guion
+										var year = cellValue.Substring(secondLastDashIndex + 1, lastDashIndex - secondLastDashIndex - 1).Trim();
+
+										// Crear nueva celda en la hoja
+										var newCell = row.CreateCell(2);
+										newCell.CellStyle = cell.CellStyle;
+										newCell.SetCellValue(extractedDigits);
+
+										// Agregar al diccionario global
+										if (!extractedDigitsList.ContainsKey(extractedDigits))
+										{
+											extractedDigitsList[extractedDigits] = year;
+										}
+									}
+								}
                             }
                         }
                     }
